@@ -2,9 +2,11 @@
   "name": "f8nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "watch": "node-sass -w src/resources/scss -o src/public/css",
+
+    "start": "nodemon --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,6 +18,9 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
+    "express-handlebars": "^6.0.6",
+    "morgan": "^1.10.0",
+    "node-sass": "^8.0.0",
     "nodemon": "^2.0.20"
   }
 }
