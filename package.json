@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-
+    "prepare": "husky install",
+    "beautiful": "lint-staged",
     "watch": "node-sass -w src/resources/scss -o src/public/css",
     "start": "nodemon --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,17 +18,17 @@
   "dependencies": {
     "express": "^4.18.2"
   },
-  "husky":{
+  "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
-      
-
     }
   },
-  "lint-staged":{"src/**/*.{js,json,scss,css,html}":"prettier --single-quote --trailing-comma all --tab-width 4 --write"},
+  "lint-staged": {
+    "src/**/*.{js,json,scss,css,html}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+  },
   "devDependencies": {
     "express-handlebars": "^6.0.6",
-    "husky": "^8.0.3",
+    "husky": "^4.2.5",
     "lint-staged": "^13.1.0",
     "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
