@@ -18,7 +18,7 @@
         <td>{{this.createdAt}}</td>
         <td>
             <a type="button" href="/courses/{{this._id}}/edit" class="btn btn-success">Sửa</a>
-<a type="button" class="btn btn-danger">Xóa</a>
+<a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{this._id}}">Xóa</a>
         </td>
       </tr>
       
@@ -26,3 +26,57 @@
     </tbody>
   </table>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa khóa học</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Có chắc muốn xóa khóa học này không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button id="btn-delete-course" type="button" class="btn btn-primary"  
+   
+
+        
+        >Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form
+   name="delete-form"
+    method="post"
+  
+  ></form>
+<script>
+  const exampleModal = document.getElementById('exampleModal')
+
+
+if (exampleModal) {
+      let courseId
+      let deleteForm=document.forms['delete-form']
+       const btnDelete=document.getElementById('btn-delete-course')
+  exampleModal.addEventListener('show.bs.modal', event => {
+  
+    // Button that triggered the modal
+    const button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    courseId =button.getAttribute('data-id')
+   
+   
+
+    btnDelete.onclick=()=>{
+      deleteForm.action="/courses/"+ courseId +"?_method=DELETE"
+      deleteForm.submit()
+    }
+
+    
+
+  })
+}
+</script>
